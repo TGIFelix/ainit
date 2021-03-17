@@ -11,7 +11,7 @@ function buildConfig() {
         type: 'text',
         name: 'name',
         message: 'What will be the next big thing?',
-        default: path.basename(process.cwd())
+        default: path.basename(process.cwd()),
       },
       {
         type: 'list',
@@ -20,11 +20,12 @@ function buildConfig() {
         choices: [
           'SvelteJS',
           'ReactJS',
-          'NodeJS'
-        ]
-      }
+          'NodeJS',
+        ],
+      },
     ])
-    .then(answers => {
+    .then((answers) => {
+      // eslint-disable-next-line no-console
       console.log(answers);
     });
 }
@@ -36,13 +37,14 @@ if (existingConfig) {
         type: 'confirm',
         name: 'overwrite',
         message: 'overwrite existing package.json?',
-        default: false
-      }
+        default: false,
+      },
     ])
-    .then(answers => {
+    .then((answers) => {
       if (answers.overwrite) {
         buildConfig();
       } else {
+        // eslint-disable-next-line no-console
         console.log('bye for now?');
       }
     });
