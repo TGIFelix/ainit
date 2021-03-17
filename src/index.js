@@ -1,11 +1,18 @@
+/* eslint-disable default-case */
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 
+const svelte = require('./config/svelte.js');
+
 const existingConfig = fs.existsSync('debug.json');
 
-function buildConfig() {
-  inquirer
+async function buildConfig() {
+  let config = {
+    version: 2,
+  };
+
+  const answers = await inquirer
     .prompt([
       {
         type: 'text',
@@ -18,16 +25,19 @@ function buildConfig() {
         name: 'type',
         message: 'What Jam?',
         choices: [
-          'SvelteJS',
-          'ReactJS',
-          'NodeJS',
+          'sveltejs',
+          'reactjs',
+          'nodejs',
         ],
       },
-    ])
-    .then((answers) => {
-      // eslint-disable-next-line no-console
-      console.log(answers);
-    });
+    ]);
+  config.name = answers.name;
+  switch (answers.type) {
+    case 'sveltejs':
+      config = await svelte(config);
+      break;
+  }
+  console.log(config);
 }
 
 if (existingConfig) {
@@ -44,7 +54,6 @@ if (existingConfig) {
       if (answers.overwrite) {
         buildConfig();
       } else {
-        // eslint-disable-next-line no-console
         console.log('bye for now?');
       }
     });
