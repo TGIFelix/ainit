@@ -6,7 +6,7 @@
     "email": "tgifelix@icloud.com",
     "url": "https://www.tgifelix.com"
   },
-  "description": "Auto init npm & git",
+  "description": "Auto init your next project",
   "keywords": [],
   "repository": {
     "url": "https://github.com/TGIFelix/ainit.git"

@@ -12,7 +12,7 @@ const baseConfig = {
   }],
 };
 
-async function svelteJS(config) {
+async function reactJS(config) {
   let mainFile = 'src/index.js';
   try {
     // eslint-disable-next-line
@@ -32,12 +32,10 @@ async function svelteJS(config) {
     ]);
     // eslint-disable-next-line no-console
   console.log(answer);
-  baseConfig.builds[0].src = answer.main;
-  baseConfig.routes[0].dest = answer.main;
   return {
     ...config,
     ...baseConfig,
   };
 }
 
-module.exports = svelteJS;
+module.exports = reactJS;

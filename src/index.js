@@ -1,11 +1,13 @@
-/* eslint-disable default-case */
+/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 
-const svelte = require('./config/svelte.js');
+const svelteJS = require('./config/svelte.js');
+const reactJS = require('./config/react.js');
+const nodeJS = require('./config/node.js');
 
-const existingConfig = fs.existsSync('debug.json');
+const existingConfig = fs.existsSync('test.json');
 
 async function buildConfig() {
   let config = {
@@ -34,7 +36,15 @@ async function buildConfig() {
   config.name = answers.name;
   switch (answers.type) {
     case 'sveltejs':
-      config = await svelte(config);
+      config = await svelteJS(config);
+      break;
+    case 'reactjs':
+      config = await reactJS(config);
+      break;
+    case 'nodejs':
+      config = await nodeJS(config);
+      break;
+    default:
       break;
   }
   console.log(config);
@@ -46,15 +56,15 @@ if (existingConfig) {
       {
         type: 'confirm',
         name: 'overwrite',
-        message: 'overwrite existing package.json?',
-        default: false,
+        message: 'overwrite existing test.json?',
+        default: true,
       },
     ])
     .then((answers) => {
       if (answers.overwrite) {
         buildConfig();
       } else {
-        console.log('bye for now?');
+        console.log('👋😊');
       }
     });
 } else {
