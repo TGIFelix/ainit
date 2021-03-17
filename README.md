@@ -1,3 +1,3 @@
 # AInit
 
-Auto Init :octocat:
+:octocat: Auto Init :octocat:
