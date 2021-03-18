@@ -4,8 +4,10 @@ Auto Init script.
 
 ## Run or install
 
-`npx ainit`
-‌`npm i -g ainit`
+```shell
+npx ainit
+‌npm i -g ainit
+```
 
 ## To-do
 
@@ -15,8 +17,8 @@ Auto Init script.
 - [ ]  Select project boilerplate
   - [ ] Svelte x Go API
   - [ ] React x Tailwind
-  - [ ] 11ty x Alpine x Tailwind
-  - [ ] Node x Inquirer x Yargs
+  - [x] 11ty x Alpine x Tailwind
+  - [x] Node x Inquirer x Yargs
 - [ ]  Select build command (default: NPM)
 - [ ]  Select deploy command (default: Vercel)
 - [ ]  Select package.json template
