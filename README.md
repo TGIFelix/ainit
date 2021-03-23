@@ -1,4 +1,4 @@
-# AInit
+![logo](logo.png)
 
 Auto Init script.
 
